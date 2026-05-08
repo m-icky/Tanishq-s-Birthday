@@ -19,9 +19,9 @@ const TVSection = () => {
   return (
     <section id="tv">
       <div className="tv-header" id="tvHeader">
-        <span className="section-label">Captured moments</span>
-        <h2>Watch the <em style={{color:'white'}}>magic</em> unfold</h2>
-        <p>A little film for a little star</p>
+        <span className="section-label" style={{color:'White'}}>Captured moments</span>
+        <h2>Watch the <em style={{color:'White'}}>magic</em> unfold</h2>
+        <p style={{color:'White'}}>A little film for a little star</p>
       </div>
 
       <div className="tv-outer">
@@ -37,7 +37,7 @@ const TVSection = () => {
         <div className="tv-frame" id="tvFrame">
           <div className="tv-screen-border">
             <div className="tv-screen">
-              <video autoPlay loop muted playsInline src="/hero section.mp4"></video>
+              <video autoPlay loop muted playsInline src="/hero-section.mp4"></video>
             </div>
           </div>
           <div className="tv-knobs">

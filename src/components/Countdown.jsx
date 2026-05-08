@@ -29,25 +29,30 @@ const Countdown = () => {
 
   return (
     <section id="countdown">
-      <div className="countdown-bg"></div>
-      <h2>Counting down to the big day</h2>
-      <p>30 May 2026 · 4:00 PM</p>
-      <div className="countdown-grid">
-        <div className="countdown-unit">
-          <span className="countdown-num">{timeLeft.days}</span>
-          <span className="countdown-label">Days</span>
-        </div>
-        <div className="countdown-unit">
-          <span className="countdown-num">{timeLeft.hours}</span>
-          <span className="countdown-label">Hours</span>
-        </div>
-        <div className="countdown-unit">
-          <span className="countdown-num">{timeLeft.mins}</span>
-          <span className="countdown-label">Minutes</span>
-        </div>
-        <div className="countdown-unit">
-          <span className="countdown-num">{timeLeft.secs}</span>
-          <span className="countdown-label">Seconds</span>
+      <div className='countdown-video-wrapper'>
+        <video className="countdown-video" autoPlay loop muted playsInline src="/hero-section.mp4"></video>
+      </div>
+      <div className='countdown-text'>
+        <div className="countdown-bg"></div>
+        <h2>Counting down to the big day</h2>
+        <p>30 May 2026 · 4:00 PM</p>
+        <div className="countdown-grid">
+          <div className="countdown-unit">
+            <span className="countdown-num">{timeLeft.days}</span>
+            <span className="countdown-label">Days</span>
+          </div>
+          <div className="countdown-unit">
+            <span className="countdown-num">{timeLeft.hours}</span>
+            <span className="countdown-label">Hours</span>
+          </div>
+          <div className="countdown-unit">
+            <span className="countdown-num">{timeLeft.mins}</span>
+            <span className="countdown-label">Minutes</span>
+          </div>
+          <div className="countdown-unit">
+            <span className="countdown-num">{timeLeft.secs}</span>
+            <span className="countdown-label">Seconds</span>
+          </div>
         </div>
       </div>
     </section>
