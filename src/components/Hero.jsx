@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import Hero3D from './Hero3D';
 import RetroGrid from './RetroGrid';
 import LightRays from './LightRays';
+import CurvedLoop from './CurvedLoop';
+import VelocityGallery from './VelocityGallery';
 import { IoImages, IoInformationCircle, IoTimer, IoBook, IoTv } from 'react-icons/io5';
 
 const Hero = () => {
@@ -12,6 +14,7 @@ const Hero = () => {
   const ctaRef = useRef(null);
   const navRef = useRef(null);
   const container3D = useRef(null);
+  const curvedRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -30,6 +33,15 @@ const Hero = () => {
         duration: 1.5,
         ease: "power4.out"
       }, "-=0.8");
+
+      if (curvedRef.current) {
+        tl.from(curvedRef.current, {
+          x: 40,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out"
+        }, "-=1.0");
+      }
 
       if (taglineRef.current) {
         tl.from(taglineRef.current, { y: 15, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=1.0");
@@ -100,6 +112,10 @@ const Hero = () => {
           />
 
           {/* Centered 3D model */}
+          <div className="hero-velocity-gallery-wrapper">
+            <VelocityGallery />
+          </div>
+
           <div className="hero-3d-container" ref={container3D}>
             <Hero3D />
           </div>
@@ -108,6 +124,19 @@ const Hero = () => {
             <div>
               <h4 className="hero-title-1" ref={subTitleRef}>Happy Birthday</h4>
               <h1 className="hero-title" ref={mainTitleRef}>TanishQ</h1>
+            </div>
+          </div>
+
+          {/* Curved Loop in the top right corner */}
+          <div className="hero-curved-container" role="button">
+            <div ref={curvedRef} style={{ width: '100%', height: '100%' }}>
+              <CurvedLoop
+                marqueeText="HAPPY BIRTHDAY TANISHQ ✦ "
+                speed={1.5}
+                curveAmount={500}
+                direction="left"
+                interactive={true}
+              />
             </div>
           </div>
         </div>

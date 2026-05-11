@@ -30,7 +30,6 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* ========== BACK ELEMENTS (SCROLL BALL) ========== */
@@ -72,6 +71,44 @@ body {
   mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 2;
+}
+
+.hero-curved-container {
+  position: absolute;
+  top: 7rem;
+  right: -2rem;
+  width: clamp(260px, 25vw, 450px);
+  height: 120px;
+  z-index: 10;
+  pointer-events: auto;
+  opacity: 1;
+  transform: rotate(50deg);
+  transition: opacity 0.3s ease-in-out, scale 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hero-curved-container:hover {
+  opacity: 1;
+  scale: 1.2;
+}
+
+@media (max-width: 1024px) {
+  .hero-curved-container {
+    top: 7.5rem;
+    right: -1.5rem;
+    width: clamp(220px, 22vw, 320px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-curved-container {
+    top: 1rem;
+    right: -1rem;
+    width: clamp(180px, 20vw, 240px);
+    transform: rotate(50deg);
+  }
+  .hero-curved-container:hover {
+    transform: rotate(50deg) scale(1.05);
+  }
 }
 
 .hero-nav {
@@ -1141,55 +1178,6 @@ footer span {
   .tv-frame { padding: 0.8rem; }
 }
 
-#circle {
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  will-change: transform;
-  opacity: 0;
-  transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-  mix-blend-mode: difference;
-}
-
-#cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--dusty-rose);
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10001;
-  will-change: transform;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: difference;
-}
-
-/* Ensure links and buttons have no cursor but trigger hover */
-a, button, .sp-card, .page, .hero-cta, [role="button"] {
-  cursor: none !important;
-}
-
-/* Restore native cursors on touchscreen devices to prevent UX issues */
-@media (pointer: coarse) {
-  #circle,
-  #cursor-dot {
-    display: none !important;
-  }
-  body,
-  a,
-  button,
-  .sp-card,
-  .page,
-  .hero-cta,
-  [role="button"] {
-    cursor: auto !important;
-  }
-}
 
 /* Pass-through pointer clicks on the large hero-content block except for direct children */
 .hero-content {
@@ -1202,7 +1190,7 @@ a, button, .sp-card, .page, .hero-cta, [role="button"] {
 /* ========== HERO 3D MODEL SECTION ========== */
 .hero-3d-container {
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -55%);
   width: 50%;
@@ -1210,6 +1198,33 @@ a, button, .sp-card, .page, .hero-cta, [role="button"] {
   z-index: 3;
   pointer-events: auto;
   overflow: hidden;
+}
+
+/* Velocity Gallery Wrapper in Hero Section */
+.hero-velocity-gallery-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-52%);
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 1024px) {
+  .hero-velocity-gallery-wrapper {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-velocity-gallery-wrapper {
+    transform: translateY(-48%);
+    opacity: 0.55;
+  }
 }
 
 /* 3D Loader Layout */
@@ -1269,4 +1284,13 @@ a, button, .sp-card, .page, .hero-cta, [role="button"] {
   transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-
+/* Fix for Hero 3D Model Responsiveness overriding base class */
+@media (max-width: 768px) {
+  .hero-3d-container { width: 100%; height: 50vh; overflow: visible; }
+}
+@media (max-width: 480px) {
+  .hero-3d-container { width: 100%; height: 45vh; overflow: visible; }
+}
+@media (max-width: 360px) {
+  .hero-3d-container { width: 100%; height: 42vh; overflow: visible; }
+}
